@@ -1,0 +1,105 @@
+id,description,portion,calories
+01001,Butter salted,1 tbsp,102
+01002,Butter whipped with salt,1 tbsp,67
+01077,Milk whole 3.25% milkfat,1 cup,149
+01078,Milk reduced fat 2%,1 cup,122
+01079,Milk lowfat 1%,1 cup,102
+01082,Milk nonfat skim,1 cup,83
+01085,Yogurt plain whole milk,8 oz,149
+01116,Yogurt plain lowfat,8 oz,154
+01123,Egg whole raw fresh,1 large,72
+01124,Egg white raw fresh,1 large,17
+01125,Egg yolk raw fresh,1 large,55
+01145,Cheese cheddar,1 oz,114
+01146,Cheese mozzarella whole milk,1 oz,85
+01159,Cheese cottage lowfat 2%,1 cup,203
+09003,Apple raw with skin,1 medium,95
+09021,Apricots raw,1 cup halves,79
+09037,Avocado raw,1/2 fruit,161
+09040,Banana raw,1 medium,105
+09050,Blueberries raw,1 cup,84
+09070,Cherries sweet raw,1 cup with pits,87
+09112,Grapefruit raw,1/2 medium,52
+09139,Grapes red or green,1 cup,104
+09148,Kiwifruit raw,1 medium,42
+09150,Lemon raw,1 medium,17
+09159,Lime raw,1 medium,20
+09176,Mango raw,1 cup sliced,99
+09181,Melon cantaloupe raw,1 cup cubed,54
+09200,Orange raw,1 medium,62
+09226,Peach raw,1 medium,58
+09236,Pear raw,1 medium,101
+09266,Strawberries raw,1 cup halves,49
+09279,Tangerine raw,1 medium,47
+09298,Watermelon raw,1 cup diced,46
+11011,Asparagus cooked boiled,1 cup,40
+11080,Beets cooked boiled,1 cup sliced,75
+11090,Broccoli raw,1 cup chopped,31
+11109,Cabbage raw,1 cup shredded,22
+11124,Carrot raw,1 medium,25
+11135,Cauliflower raw,1 cup chopped,25
+11143,Celery raw,1 cup chopped,16
+11168,Corn sweet yellow cooked,1 medium ear,77
+11205,Cucumber raw with peel,1 cup sliced,16
+11215,Garlic raw,1 clove,4
+11251,Lettuce green leaf raw,1 cup shredded,5
+11253,Lettuce iceberg raw,1 cup shredded,10
+11260,Mushrooms raw,1 cup sliced,15
+11282,Onions raw,1 medium,44
+11333,Peppers sweet green raw,1 medium,24
+11353,Potato baked with skin,1 medium,161
+11357,Potato boiled without skin,1 medium,144
+11429,Spinach raw,1 cup,7
+11457,Spinach cooked boiled,1 cup,41
+11529,Tomato red ripe raw,1 medium,22
+11531,Tomato cherry raw,1 cup,27
+11583,Zucchini raw,1 cup sliced,19
+12006,Chia seeds dried,1 oz,138
+12036,Peanuts dry roasted,1 oz,166
+12061,Almonds dry roasted,1 oz,169
+12085,Cashew nuts dry roasted,1 oz,163
+12120,Hazelnuts or filberts,1 oz,178
+12131,Pecans dry roasted,1 oz,201
+12142,Sunflower seed kernels,1 oz,165
+12151,Walnuts english,1 oz,185
+15076,Salmon atlantic farmed cooked,3 oz,175
+15088,Cod atlantic cooked,3 oz,89
+15121,Shrimp mixed species cooked,3 oz,84
+15236,Tuna yellowfin fresh cooked,3 oz,111
+16057,Chickpeas garbanzo beans cooked,1 cup,269
+16058,Black beans cooked,1 cup,227
+16070,Kidney beans red cooked,1 cup,225
+16082,Lentils cooked,1 cup,230
+16167,Pinto beans cooked,1 cup,245
+18003,Bagel plain,1 medium,289
+18029,Bread white commercially prepared,1 slice,79
+18060,Bread whole wheat commercially prepared,1 slice,81
+18064,Pie apple commercially prepared,1 slice,296
+18080,Muffins blueberry commercially prepared,1 medium,313
+18100,Biscuits plain or buttermilk,1 medium,212
+18137,Cake chocolate prepared from recipe,1 slice,352
+18140,Cookies chocolate chip commercially prepared,1 medium,49
+18192,Crackers saltines,5 crackers,64
+18225,Macaroni cooked,1 cup,221
+18249,Oatmeal cooked,1 cup,166
+18291,Pancakes plain,1 medium,86
+18352,Tortilla corn,1 medium,52
+18353,Tortilla flour,1 medium,104
+19296,Ice cream vanilla,1/2 cup,137
+19411,Jelly,1 tbsp,56
+20006,Barley pearled cooked,1 cup,193
+20014,Brown rice cooked,1 cup,218
+20037,White rice cooked,1 cup,205
+20080,Wheat flour white all purpose,1 cup,455
+20137,Quinoa cooked,1 cup,222
+23232,Beef ground 85% lean cooked,3 oz,212
+23557,Chicken breast meat only cooked,3 oz,140
+23572,Chicken thigh meat only cooked,3 oz,179
+23617,Turkey breast meat only cooked,3 oz,125
+23633,Turkey ground cooked,3 oz,200
+23648,Pork chop cooked,3 oz,206
+23651,Ham cured roasted,3 oz,151
+23672,Bacon cooked,3 slices,161
+35179,Pizza cheese,1 slice,272
+43015,Salad dressing ranch,2 tbsp,129
+43274,Mayonnaise,1 tbsp,94

@@ -1,0 +1,626 @@
+[
+  {
+    "id": "01001",
+    "description": "Butter salted",
+    "portion": "1 tbsp",
+    "calories": 102
+  },
+  {
+    "id": "01002",
+    "description": "Butter whipped with salt",
+    "portion": "1 tbsp",
+    "calories": 67
+  },
+  {
+    "id": "01077",
+    "description": "Milk whole 3.25% milkfat",
+    "portion": "1 cup",
+    "calories": 149
+  },
+  {
+    "id": "01078",
+    "description": "Milk reduced fat 2%",
+    "portion": "1 cup",
+    "calories": 122
+  },
+  {
+    "id": "01079",
+    "description": "Milk lowfat 1%",
+    "portion": "1 cup",
+    "calories": 102
+  },
+  {
+    "id": "01082",
+    "description": "Milk nonfat skim",
+    "portion": "1 cup",
+    "calories": 83
+  },
+  {
+    "id": "01085",
+    "description": "Yogurt plain whole milk",
+    "portion": "8 oz",
+    "calories": 149
+  },
+  {
+    "id": "01116",
+    "description": "Yogurt plain lowfat",
+    "portion": "8 oz",
+    "calories": 154
+  },
+  {
+    "id": "01123",
+    "description": "Egg whole raw fresh",
+    "portion": "1 large",
+    "calories": 72
+  },
+  {
+    "id": "01124",
+    "description": "Egg white raw fresh",
+    "portion": "1 large",
+    "calories": 17
+  },
+  {
+    "id": "01125",
+    "description": "Egg yolk raw fresh",
+    "portion": "1 large",
+    "calories": 55
+  },
+  {
+    "id": "01145",
+    "description": "Cheese cheddar",
+    "portion": "1 oz",
+    "calories": 114
+  },
+  {
+    "id": "01146",
+    "description": "Cheese mozzarella whole milk",
+    "portion": "1 oz",
+    "calories": 85
+  },
+  {
+    "id": "01159",
+    "description": "Cheese cottage lowfat 2%",
+    "portion": "1 cup",
+    "calories": 203
+  },
+  {
+    "id": "09003",
+    "description": "Apple raw with skin",
+    "portion": "1 medium",
+    "calories": 95
+  },
+  {
+    "id": "09021",
+    "description": "Apricots raw",
+    "portion": "1 cup halves",
+    "calories": 79
+  },
+  {
+    "id": "09037",
+    "description": "Avocado raw",
+    "portion": "1/2 fruit",
+    "calories": 161
+  },
+  {
+    "id": "09040",
+    "description": "Banana raw",
+    "portion": "1 medium",
+    "calories": 105
+  },
+  {
+    "id": "09050",
+    "description": "Blueberries raw",
+    "portion": "1 cup",
+    "calories": 84
+  },
+  {
+    "id": "09070",
+    "description": "Cherries sweet raw",
+    "portion": "1 cup with pits",
+    "calories": 87
+  },
+  {
+    "id": "09112",
+    "description": "Grapefruit raw",
+    "portion": "1/2 medium",
+    "calories": 52
+  },
+  {
+    "id": "09139",
+    "description": "Grapes red or green",
+    "portion": "1 cup",
+    "calories": 104
+  },
+  {
+    "id": "09148",
+    "description": "Kiwifruit raw",
+    "portion": "1 medium",
+    "calories": 42
+  },
+  {
+    "id": "09150",
+    "description": "Lemon raw",
+    "portion": "1 medium",
+    "calories": 17
+  },
+  {
+    "id": "09159",
+    "description": "Lime raw",
+    "portion": "1 medium",
+    "calories": 20
+  },
+  {
+    "id": "09176",
+    "description": "Mango raw",
+    "portion": "1 cup sliced",
+    "calories": 99
+  },
+  {
+    "id": "09181",
+    "description": "Melon cantaloupe raw",
+    "portion": "1 cup cubed",
+    "calories": 54
+  },
+  {
+    "id": "09200",
+    "description": "Orange raw",
+    "portion": "1 medium",
+    "calories": 62
+  },
+  {
+    "id": "09226",
+    "description": "Peach raw",
+    "portion": "1 medium",
+    "calories": 58
+  },
+  {
+    "id": "09236",
+    "description": "Pear raw",
+    "portion": "1 medium",
+    "calories": 101
+  },
+  {
+    "id": "09266",
+    "description": "Strawberries raw",
+    "portion": "1 cup halves",
+    "calories": 49
+  },
+  {
+    "id": "09279",
+    "description": "Tangerine raw",
+    "portion": "1 medium",
+    "calories": 47
+  },
+  {
+    "id": "09298",
+    "description": "Watermelon raw",
+    "portion": "1 cup diced",
+    "calories": 46
+  },
+  {
+    "id": "11011",
+    "description": "Asparagus cooked boiled",
+    "portion": "1 cup",
+    "calories": 40
+  },
+  {
+    "id": "11080",
+    "description": "Beets cooked boiled",
+    "portion": "1 cup sliced",
+    "calories": 75
+  },
+  {
+    "id": "11090",
+    "description": "Broccoli raw",
+    "portion": "1 cup chopped",
+    "calories": 31
+  },
+  {
+    "id": "11109",
+    "description": "Cabbage raw",
+    "portion": "1 cup shredded",
+    "calories": 22
+  },
+  {
+    "id": "11124",
+    "description": "Carrot raw",
+    "portion": "1 medium",
+    "calories": 25
+  },
+  {
+    "id": "11135",
+    "description": "Cauliflower raw",
+    "portion": "1 cup chopped",
+    "calories": 25
+  },
+  {
+    "id": "11143",
+    "description": "Celery raw",
+    "portion": "1 cup chopped",
+    "calories": 16
+  },
+  {
+    "id": "11168",
+    "description": "Corn sweet yellow cooked",
+    "portion": "1 medium ear",
+    "calories": 77
+  },
+  {
+    "id": "11205",
+    "description": "Cucumber raw with peel",
+    "portion": "1 cup sliced",
+    "calories": 16
+  },
+  {
+    "id": "11215",
+    "description": "Garlic raw",
+    "portion": "1 clove",
+    "calories": 4
+  },
+  {
+    "id": "11251",
+    "description": "Lettuce green leaf raw",
+    "portion": "1 cup shredded",
+    "calories": 5
+  },
+  {
+    "id": "11253",
+    "description": "Lettuce iceberg raw",
+    "portion": "1 cup shredded",
+    "calories": 10
+  },
+  {
+    "id": "11260",
+    "description": "Mushrooms raw",
+    "portion": "1 cup sliced",
+    "calories": 15
+  },
+  {
+    "id": "11282",
+    "description": "Onions raw",
+    "portion": "1 medium",
+    "calories": 44
+  },
+  {
+    "id": "11333",
+    "description": "Peppers sweet green raw",
+    "portion": "1 medium",
+    "calories": 24
+  },
+  {
+    "id": "11353",
+    "description": "Potato baked with skin",
+    "portion": "1 medium",
+    "calories": 161
+  },
+  {
+    "id": "11357",
+    "description": "Potato boiled without skin",
+    "portion": "1 medium",
+    "calories": 144
+  },
+  {
+    "id": "11429",
+    "description": "Spinach raw",
+    "portion": "1 cup",
+    "calories": 7
+  },
+  {
+    "id": "11457",
+    "description": "Spinach cooked boiled",
+    "portion": "1 cup",
+    "calories": 41
+  },
+  {
+    "id": "11529",
+    "description": "Tomato red ripe raw",
+    "portion": "1 medium",
+    "calories": 22
+  },
+  {
+    "id": "11531",
+    "description": "Tomato cherry raw",
+    "portion": "1 cup",
+    "calories": 27
+  },
+  {
+    "id": "11583",
+    "description": "Zucchini raw",
+    "portion": "1 cup sliced",
+    "calories": 19
+  },
+  {
+    "id": "12006",
+    "description": "Chia seeds dried",
+    "portion": "1 oz",
+    "calories": 138
+  },
+  {
+    "id": "12036",
+    "description": "Peanuts dry roasted",
+    "portion": "1 oz",
+    "calories": 166
+  },
+  {
+    "id": "12061",
+    "description": "Almonds dry roasted",
+    "portion": "1 oz",
+    "calories": 169
+  },
+  {
+    "id": "12085",
+    "description": "Cashew nuts dry roasted",
+    "portion": "1 oz",
+    "calories": 163
+  },
+  {
+    "id": "12120",
+    "description": "Hazelnuts or filberts",
+    "portion": "1 oz",
+    "calories": 178
+  },
+  {
+    "id": "12131",
+    "description": "Pecans dry roasted",
+    "portion": "1 oz",
+    "calories": 201
+  },
+  {
+    "id": "12142",
+    "description": "Sunflower seed kernels",
+    "portion": "1 oz",
+    "calories": 165
+  },
+  {
+    "id": "12151",
+    "description": "Walnuts english",
+    "portion": "1 oz",
+    "calories": 185
+  },
+  {
+    "id": "15076",
+    "description": "Salmon atlantic farmed cooked",
+    "portion": "3 oz",
+    "calories": 175
+  },
+  {
+    "id": "15088",
+    "description": "Cod atlantic cooked",
+    "portion": "3 oz",
+    "calories": 89
+  },
+  {
+    "id": "15121",
+    "description": "Shrimp mixed species cooked",
+    "portion": "3 oz",
+    "calories": 84
+  },
+  {
+    "id": "15236",
+    "description": "Tuna yellowfin fresh cooked",
+    "portion": "3 oz",
+    "calories": 111
+  },
+  {
+    "id": "16057",
+    "description": "Chickpeas garbanzo beans cooked",
+    "portion": "1 cup",
+    "calories": 269
+  },
+  {
+    "id": "16058",
+    "description": "Black beans cooked",
+    "portion": "1 cup",
+    "calories": 227
+  },
+  {
+    "id": "16070",
+    "description": "Kidney beans red cooked",
+    "portion": "1 cup",
+    "calories": 225
+  },
+  {
+    "id": "16082",
+    "description": "Lentils cooked",
+    "portion": "1 cup",
+    "calories": 230
+  },
+  {
+    "id": "16167",
+    "description": "Pinto beans cooked",
+    "portion": "1 cup",
+    "calories": 245
+  },
+  {
+    "id": "18003",
+    "description": "Bagel plain",
+    "portion": "1 medium",
+    "calories": 289
+  },
+  {
+    "id": "18029",
+    "description": "Bread white commercially prepared",
+    "portion": "1 slice",
+    "calories": 79
+  },
+  {
+    "id": "18060",
+    "description": "Bread whole wheat commercially prepared",
+    "portion": "1 slice",
+    "calories": 81
+  },
+  {
+    "id": "18064",
+    "description": "Pie apple commercially prepared",
+    "portion": "1 slice",
+    "calories": 296
+  },
+  {
+    "id": "18080",
+    "description": "Muffins blueberry commercially prepared",
+    "portion": "1 medium",
+    "calories": 313
+  },
+  {
+    "id": "18100",
+    "description": "Biscuits plain or buttermilk",
+    "portion": "1 medium",
+    "calories": 212
+  },
+  {
+    "id": "18137",
+    "description": "Cake chocolate prepared from recipe",
+    "portion": "1 slice",
+    "calories": 352
+  },
+  {
+    "id": "18140",
+    "description": "Cookies chocolate chip commercially prepared",
+    "portion": "1 medium",
+    "calories": 49
+  },
+  {
+    "id": "18192",
+    "description": "Crackers saltines",
+    "portion": "5 crackers",
+    "calories": 64
+  },
+  {
+    "id": "18225",
+    "description": "Macaroni cooked",
+    "portion": "1 cup",
+    "calories": 221
+  },
+  {
+    "id": "18249",
+    "description": "Oatmeal cooked",
+    "portion": "1 cup",
+    "calories": 166
+  },
+  {
+    "id": "18291",
+    "description": "Pancakes plain",
+    "portion": "1 medium",
+    "calories": 86
+  },
+  {
+    "id": "18352",
+    "description": "Tortilla corn",
+    "portion": "1 medium",
+    "calories": 52
+  },
+  {
+    "id": "18353",
+    "description": "Tortilla flour",
+    "portion": "1 medium",
+    "calories": 104
+  },
+  {
+    "id": "19296",
+    "description": "Ice cream vanilla",
+    "portion": "1/2 cup",
+    "calories": 137
+  },
+  {
+    "id": "19411",
+    "description": "Jelly",
+    "portion": "1 tbsp",
+    "calories": 56
+  },
+  {
+    "id": "20006",
+    "description": "Barley pearled cooked",
+    "portion": "1 cup",
+    "calories": 193
+  },
+  {
+    "id": "20014",
+    "description": "Brown rice cooked",
+    "portion": "1 cup",
+    "calories": 218
+  },
+  {
+    "id": "20037",
+    "description": "White rice cooked",
+    "portion": "1 cup",
+    "calories": 205
+  },
+  {
+    "id": "20080",
+    "description": "Wheat flour white all purpose",
+    "portion": "1 cup",
+    "calories": 455
+  },
+  {
+    "id": "20137",
+    "description": "Quinoa cooked",
+    "portion": "1 cup",
+    "calories": 222
+  },
+  {
+    "id": "23232",
+    "description": "Beef ground 85% lean cooked",
+    "portion": "3 oz",
+    "calories": 212
+  },
+  {
+    "id": "23557",
+    "description": "Chicken breast meat only cooked",
+    "portion": "3 oz",
+    "calories": 140
+  },
+  {
+    "id": "23572",
+    "description": "Chicken thigh meat only cooked",
+    "portion": "3 oz",
+    "calories": 179
+  },
+  {
+    "id": "23617",
+    "description": "Turkey breast meat only cooked",
+    "portion": "3 oz",
+    "calories": 125
+  },
+  {
+    "id": "23633",
+    "description": "Turkey ground cooked",
+    "portion": "3 oz",
+    "calories": 200
+  },
+  {
+    "id": "23648",
+    "description": "Pork chop cooked",
+    "portion": "3 oz",
+    "calories": 206
+  },
+  {
+    "id": "23651",
+    "description": "Ham cured roasted",
+    "portion": "3 oz",
+    "calories": 151
+  },
+  {
+    "id": "23672",
+    "description": "Bacon cooked",
+    "portion": "3 slices",
+    "calories": 161
+  },
+  {
+    "id": "35179",
+    "description": "Pizza cheese",
+    "portion": "1 slice",
+    "calories": 272
+  },
+  {
+    "id": "43015",
+    "description": "Salad dressing ranch",
+    "portion": "2 tbsp",
+    "calories": 129
+  },
+  {
+    "id": "43274",
+    "description": "Mayonnaise",
+    "portion": "1 tbsp",
+    "calories": 94
+  }
+]
