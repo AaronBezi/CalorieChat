@@ -92,4 +92,32 @@ class MemoryLogDao {
     _meals.removeWhere((meal) => meal.id == id);
     await _save();
   }
+
+  /// Update an existing meal
+  Future<void> updateMeal(LoggedMeal meal) async {
+    if (meal.id == 0) {
+      throw ArgumentError('Cannot update meal with ID 0');
+    }
+
+    await _initialize();
+
+    final index = _meals.indexWhere((m) => m.id == meal.id);
+    if (index != -1) {
+      _meals[index] = meal;
+      await _save();
+    } else {
+      throw ArgumentError('Meal with ID ${meal.id} not found');
+    }
+  }
+
+  /// Get a specific meal by ID
+  Future<LoggedMeal?> getMealById(int id) async {
+    await _initialize();
+
+    try {
+      return _meals.firstWhere((meal) => meal.id == id);
+    } catch (e) {
+      return null;
+    }
+  }
 }

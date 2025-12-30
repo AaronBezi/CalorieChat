@@ -33,4 +33,14 @@ class LogRepository {
   Future<void> deleteMeal(int id) async {
     return await _dao.deleteMeal(id);
   }
+
+  /// Update an existing meal
+  Future<void> updateMeal(LoggedMeal meal) async {
+    return await _dao.updateMeal(meal);
+  }
+
+  /// Get a specific meal by ID
+  Future<LoggedMeal?> getMealById(int id) async {
+    return await _dao.getMealById(id);
+  }
 }

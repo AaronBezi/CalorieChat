@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'insights_controller.dart';
+import '../../data/models/logged_meal.dart';
 
 class InsightsScreen extends StatefulWidget {
   const InsightsScreen({super.key});
@@ -26,6 +27,11 @@ class _InsightsScreenState extends State<InsightsScreen> {
         title: const Text('Insights'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
+          IconButton(
+            icon: const Icon(Icons.download_outlined),
+            onPressed: () => _showExportDialog(context.read<InsightsController>()),
+            tooltip: 'Export Data',
+          ),
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () => context.read<InsightsController>().loadData(),
@@ -400,6 +406,12 @@ class _InsightsScreenState extends State<InsightsScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton.icon(
+                  onPressed: () => _editMeal(controller, meal),
+                  icon: const Icon(Icons.edit_outlined),
+                  label: const Text('Edit'),
+                ),
+                const SizedBox(width: 8),
+                TextButton.icon(
                   onPressed: () => _confirmDeleteMeal(controller, meal),
                   icon: const Icon(Icons.delete_outline, color: Colors.red),
                   label: const Text('Delete', style: TextStyle(color: Colors.red)),
@@ -410,6 +422,141 @@ class _InsightsScreenState extends State<InsightsScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _editMeal(InsightsController controller, LoggedMeal meal) async {
+    // Create editable copies of the meal items
+    final editableItems = meal.items.map((item) {
+      return LoggedMealItem(
+        foodId: item.foodId,
+        foodDescription: item.foodDescription,
+        portion: item.portion,
+        quantity: item.quantity,
+        calories: item.calories,
+      );
+    }).toList();
+
+    final descriptionController = TextEditingController(text: meal.description);
+
+    final result = await showDialog<bool>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) {
+          return AlertDialog(
+            title: const Text('Edit Meal'),
+            content: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextField(
+                    controller: descriptionController,
+                    decoration: const InputDecoration(
+                      labelText: 'Meal Description',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text('Items:', style: TextStyle(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 8),
+                  ...editableItems.asMap().entries.map((entry) {
+                    final index = entry.key;
+                    final item = entry.value;
+                    return Card(
+                      margin: const EdgeInsets.only(bottom: 8),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(item.foodDescription, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                  Text('${item.portion} • ${item.calories} cal'),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              width: 60,
+                              child: TextField(
+                                decoration: const InputDecoration(
+                                  labelText: 'Qty',
+                                  border: OutlineInputBorder(),
+                                  contentPadding: EdgeInsets.all(8),
+                                ),
+                                keyboardType: TextInputType.number,
+                                textAlign: TextAlign.center,
+                                controller: TextEditingController(text: item.quantity.toString())
+                                  ..selection = TextSelection.fromPosition(
+                                    TextPosition(offset: item.quantity.toString().length),
+                                  ),
+                                onChanged: (value) {
+                                  final newQty = int.tryParse(value) ?? 1;
+                                  setState(() {
+                                    editableItems[index] = LoggedMealItem(
+                                      foodId: item.foodId,
+                                      foodDescription: item.foodDescription,
+                                      portion: item.portion,
+                                      quantity: newQty,
+                                      calories: item.calories,
+                                    );
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: const Text('Save'),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+
+    if (result == true && mounted) {
+      // Calculate new total calories
+      final newTotalCalories = editableItems.fold<int>(
+        0,
+        (sum, item) => sum + (item.calories * item.quantity),
+      );
+
+      // Create updated meal
+      final updatedMeal = LoggedMeal(
+        id: meal.id,
+        description: descriptionController.text.trim(),
+        totalCalories: newTotalCalories,
+        timestamp: meal.timestamp,
+        items: editableItems,
+      );
+
+      final success = await controller.updateMeal(updatedMeal);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(success ? 'Meal updated successfully' : 'Failed to update meal'),
+            backgroundColor: success ? Colors.green : Colors.red,
+          ),
+        );
+      }
+    }
+
+    descriptionController.dispose();
   }
 
   Future<void> _confirmDeleteMeal(InsightsController controller, meal) async {
@@ -441,6 +588,68 @@ class _InsightsScreenState extends State<InsightsScreen> {
             backgroundColor: Colors.green,
           ),
         );
+      }
+    }
+  }
+
+  Future<void> _showExportDialog(InsightsController controller) async {
+    final choice = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Export Data'),
+        content: const Text('Choose export format:'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          TextButton.icon(
+            onPressed: () => Navigator.pop(context, 'summary'),
+            icon: const Icon(Icons.summarize),
+            label: const Text('Summary'),
+          ),
+          TextButton.icon(
+            onPressed: () => Navigator.pop(context, 'detailed'),
+            icon: const Icon(Icons.list_alt),
+            label: const Text('Detailed'),
+          ),
+        ],
+      ),
+    );
+
+    if (choice != null && mounted) {
+      try {
+        String filePath;
+
+        if (choice == 'summary') {
+          filePath = await controller.exportSummaryToCSV();
+        } else {
+          filePath = await controller.exportMealsToCSV();
+        }
+
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Exported to: $filePath'),
+              backgroundColor: Colors.green,
+              duration: const Duration(seconds: 5),
+              action: SnackBarAction(
+                label: 'OK',
+                textColor: Colors.white,
+                onPressed: () {},
+              ),
+            ),
+          );
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Export failed: ${e.toString()}'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       }
     }
   }

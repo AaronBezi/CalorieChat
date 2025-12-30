@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import '../../data/models/logged_meal.dart';
 import '../../data/repository/log_repository.dart';
+import '../../core/services/export_service.dart';
+import '../../core/utils/app_logger.dart';
 
 class InsightsController extends ChangeNotifier {
   final LogRepository _logRepository = LogRepository();
@@ -60,6 +62,30 @@ class InsightsController extends ChangeNotifier {
     }
   }
 
+  /// Get a meal by ID for editing
+  Future<LoggedMeal?> getMealById(int id) async {
+    try {
+      return await _logRepository.getMealById(id);
+    } catch (e) {
+      _errorMessage = 'Error loading meal: ${e.toString()}';
+      notifyListeners();
+      return null;
+    }
+  }
+
+  /// Update an existing meal
+  Future<bool> updateMeal(LoggedMeal meal) async {
+    try {
+      await _logRepository.updateMeal(meal);
+      await loadData(); // Reload data after update
+      return true;
+    } catch (e) {
+      _errorMessage = 'Error updating meal: ${e.toString()}';
+      notifyListeners();
+      return false;
+    }
+  }
+
   String formatDate(DateTime date) {
     return DateFormat('MMM d, yyyy').format(date);
   }
@@ -83,6 +109,34 @@ class InsightsController extends ChangeNotifier {
       return "You've had $total calories today. Monitor your intake if you're watching calories.";
     } else {
       return "High calorie day at $total calories. Consider lighter meals tomorrow.";
+    }
+  }
+
+  /// Export all meals to CSV
+  Future<String> exportMealsToCSV() async {
+    try {
+      AppLogger.info('Exporting meals to CSV');
+      final csvPath = await ExportService.exportToCSV(_recentMeals);
+      return csvPath;
+    } catch (e) {
+      AppLogger.error('Error exporting meals to CSV', e);
+      _errorMessage = 'Error exporting data: ${e.toString()}';
+      notifyListeners();
+      rethrow;
+    }
+  }
+
+  /// Export summary statistics to CSV
+  Future<String> exportSummaryToCSV() async {
+    try {
+      AppLogger.info('Exporting summary to CSV');
+      final csvPath = await ExportService.exportSummaryToCSV(_recentMeals, _weeklyCalories);
+      return csvPath;
+    } catch (e) {
+      AppLogger.error('Error exporting summary to CSV', e);
+      _errorMessage = 'Error exporting summary: ${e.toString()}';
+      notifyListeners();
+      rethrow;
     }
   }
 }

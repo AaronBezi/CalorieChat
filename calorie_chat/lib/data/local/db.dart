@@ -1,5 +1,8 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'migrations.dart';
+import '../../core/config/app_constants.dart';
+import '../../core/utils/app_logger.dart';
 
 class AppDatabase {
   static final AppDatabase instance = AppDatabase._init();
@@ -9,7 +12,7 @@ class AppDatabase {
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-    _database = await _initDB('calorie_chat.db');
+    _database = await _initDB(AppConstants.databaseName);
     return _database!;
   }
 
@@ -19,9 +22,50 @@ class AppDatabase {
 
     return await openDatabase(
       path,
-      version: 1,
+      version: DatabaseMigrations.currentVersion,
       onCreate: _createDB,
+      onUpgrade: _upgradeDB,
+      onDowngrade: _downgradeDB,
+      onOpen: _onOpen,
     );
+  }
+
+  /// Called when database is opened
+  Future<void> _onOpen(Database db) async {
+    AppLogger.info('Database opened successfully');
+
+    // Verify integrity on open
+    final isValid = await DatabaseMigrations.verifyIntegrity(db);
+    if (!isValid) {
+      AppLogger.error('Database integrity check failed on open');
+    }
+  }
+
+  /// Called when database needs to be upgraded
+  Future<void> _upgradeDB(Database db, int oldVersion, int newVersion) async {
+    AppLogger.info('Upgrading database from v$oldVersion to v$newVersion');
+    await DatabaseMigrations.migrate(db, oldVersion, newVersion);
+  }
+
+  /// Called when database needs to be downgraded (usually during development)
+  Future<void> _downgradeDB(Database db, int oldVersion, int newVersion) async {
+    AppLogger.warning('Downgrading database from v$oldVersion to v$newVersion');
+    // For production, you might want to prevent downgrades
+    // throw Exception('Database downgrade not supported');
+
+    // For development, recreate the database
+    await _resetDatabase(db);
+  }
+
+  /// Reset database by dropping all tables and recreating
+  Future<void> _resetDatabase(Database db) async {
+    AppLogger.warning('Resetting database - all data will be lost');
+
+    await db.execute('DROP TABLE IF EXISTS logged_meal_items');
+    await db.execute('DROP TABLE IF EXISTS logged_meals');
+    await db.execute('DROP TABLE IF EXISTS foods');
+
+    await _createDB(db, DatabaseMigrations.currentVersion);
   }
 
   Future<void> _createDB(Database db, int version) async {

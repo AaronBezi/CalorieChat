@@ -114,4 +114,71 @@ class LogDao {
     );
     // Items will be deleted automatically due to CASCADE
   }
+
+  /// Update an existing meal
+  Future<void> updateMeal(LoggedMeal meal) async {
+    if (meal.id == 0) {
+      throw ArgumentError('Cannot update meal with ID 0');
+    }
+
+    final db = await _db.database;
+
+    // Update meal
+    await db.update(
+      'logged_meals',
+      {
+        'description': meal.description,
+        'total_calories': meal.totalCalories,
+        'timestamp': meal.timestamp.millisecondsSinceEpoch,
+      },
+      where: 'id = ?',
+      whereArgs: [meal.id],
+    );
+
+    // Delete old meal items
+    await db.delete(
+      'logged_meal_items',
+      where: 'meal_id = ?',
+      whereArgs: [meal.id],
+    );
+
+    // Insert new meal items
+    final batch = db.batch();
+    for (final item in meal.items) {
+      batch.insert('logged_meal_items', {
+        'meal_id': meal.id,
+        'food_id': item.foodId,
+        'food_description': item.foodDescription,
+        'portion': item.portion,
+        'quantity': item.quantity,
+        'calories': item.calories,
+      });
+    }
+    await batch.commit(noResult: true);
+  }
+
+  /// Get a specific meal by ID
+  Future<LoggedMeal?> getMealById(int id) async {
+    final db = await _db.database;
+
+    final meals = await db.query(
+      'logged_meals',
+      where: 'id = ?',
+      whereArgs: [id],
+      limit: 1,
+    );
+
+    if (meals.isEmpty) return null;
+
+    final mealRow = meals.first;
+    final items = await _getMealItems(id);
+
+    return LoggedMeal(
+      id: id,
+      description: mealRow['description'] as String,
+      totalCalories: mealRow['total_calories'] as int,
+      timestamp: DateTime.fromMillisecondsSinceEpoch(mealRow['timestamp'] as int),
+      items: items,
+    );
+  }
 }
